@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+<br><br><br><br><br><br>
+
+<div class="row">
+	<div class="col-md-8">
+		
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h1>{{ trip.title}}</h1>
+
+				<p>{{ trip.description}}</p>
+				<p>Price: ${{trip.price_quick_help}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+	      <div class="panel panel-default">
+	        <div class="panel-body">
+	          <img src="https://s-media-cache-ak0.pinimg.com/564x/f0/58/c9/f058c9d6621e9119ba6c675ab90d625c.jpg" class="img-circle center-block" height="100" width="100">
+	          <a href="#"><h4 class="text-center">Sarah Jones</h4></a>
+	          <hr/>
+	          <p>I specialize in Japan and Hawaii travel but also am very familiar with California, Thailand/SouthEast Asia and major cities in Europe. </p>
+	        </div>
+	      </div>
+	            <div class="panel panel-defaul">
+	        	<div class="panel-body">
+	        	<p>Travel Style</p>
+	        	<span class="label label-info">Budget Traveler</span> <span class="label label-warning">Backpacking</span>
+	        	<br><br>
+	        	<p>I can hekp you save a lot  $200 on average on trips for Gataca.</p>
+	        	<li> Book better flights and acommodations. Save up $300</li>
+	        	<li> Give you insights. Make sure you don't miss anything important</li>
+	        	<li> Connect ywith the right people to experience even more.</li>
+	        	<br>
+	            <button type="submit" class="btn btn-success btn-block">Get Quick Help $29</button>
+	        </div>
+	      </div>
+	    </div>
+</div>
+
+{% endblock page %}

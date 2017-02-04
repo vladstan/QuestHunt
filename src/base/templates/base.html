@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quest Hunter</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  {% block head_extra %} {% endblock head_extra %}
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">QuestHunter</a>
+          </div>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Find a trip">
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user and not user.is_anonymous %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  role="button" aria-haspopup="true" aria-expanded="fase">
+                  <img src="{% if user.profile %} {{ user.profile.avatar }} {% else %} {% static 'img/avatar.png' %} {% endif %}" class="img-circle" height="22" width="22">&nbsp;
+                  Vlad Stan <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Become a Trip Expert</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">My Profile</a></li>
+                  <li><a href="#">My Trips</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            {% else %}
+              <li>
+                <a href="#">Login with Facebook</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <div id="experiences">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a href="/experiences/adventure">Adventure Travel</a></li>
+            <li><a href="/experiences/art-culture">Art & Culture</a></li>
+            <li><a href="/experiences/backpacking">Backpacking</a></li>
+            <li><a href="/experiences/family-holidays">Family Holydays</a></li>
+            <li><a href="/experiences/food-drink">Food & Drink</a></li>
+            <li><a href="/experiences/road-trips">Road Trips</a></li>
+            <li><a href="/experiences/travel-budget">On a Budget</a></li>
+            <li><a href="/experiences/wildlife-nature">Wildlife & Nature</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="body">
+      <div class="container">
+        {% block page %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="container">
+        <span>Futuristico Inc &copy; 2016-2017</span>
+      </div>
+    </footer>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js'></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".content-markdown").each(function(){
+          var content = $(this).text()
+          console.log(content)
+          var markedContent = marked(content)
+          console.log(markedContent)
+          $(this).html(markedContent)
+        })
+      })
+    </script>
+
+  </body>
+</html>
