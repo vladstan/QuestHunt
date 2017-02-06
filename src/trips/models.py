@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from django.utils.text import slugify
@@ -7,11 +7,32 @@ from django.utils.text import slugify
 # Create your models here.
 
 class Trip(models.Model):
+
+	CATEGORY_CHOICES = (
+        ("ADV", "Adventure Travel"),
+        ("ART", "Art & Culture"),
+        ("BCK", "Backpacking"),
+        ("FAM", "Family Holydays"),
+        ("FOD", "Food & Drink"),
+        ("ROD", "Road Trips"),
+        ("BGT", "On a budget"),
+        ("WIL", "Wildlife & Nature"),
+    )
+
+
 	title = models.CharField(max_length=140)
 	slug = models.SlugField(unique = True)
+	author = models.ForeignKey(User)
+	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default = 'ADV')
 	description = models.TextField(default="Description")
-	price_quick_help = models.DecimalField(max_digits=3, decimal_places=2, default=20)
-	price_full_trip = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
+	country = models.CharField(max_length=20, default = 'United States')
+	region = models.CharField(max_length=20, default = 'Florida')
+	timestamp = models.DateTimeField(auto_now_add = True, auto_now = False)
+	updated = models.DateTimeField(auto_now_add = False, auto_now = True)
+	photo = models.FileField(upload_to = 'trips', default='/media/trips/iceland.jpg')
+	status = models.BooleanField(default = True)
+	approved = models.BooleanField(default = True)
+	featured = models.BooleanField(default = False)
 
 	def __str__(self):
 		return self.title

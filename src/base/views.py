@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from trips.models import Trip
 
 # Create your views here.
 
 def home(request):
-	groups = ['Group1', 'Grouop2']
-	return render(request, 'home.html', {'groups': groups})
+	trips = Trip.objects.filter(featured = True)
+	return render(request, 'home.html', {'trips': trips})

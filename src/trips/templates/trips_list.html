@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+  <div class="row">
+    <div class="col-md-12">
+      <img src="{% static 'img/list.jpg' %}" class="banner">
+    </div>
+    {% for trip in trips %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="{{ trip.get_absolute_url }}"><img src="/media/{{ trip.photo }}"></a>
+          <div class="caption">
+            <p><a href="{{ trip.get_absolute_url }}">{{ trip.title }}</a></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

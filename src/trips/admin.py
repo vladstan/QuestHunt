@@ -5,9 +5,9 @@ from django.contrib import admin
 from .models import Trip
 
 class TripAdmin(admin.ModelAdmin):
-	list_display = ["__str__", "description", "price_quick_help", "price_full_trip" ]
+	list_display = ["__str__", "country"]
 	search_fields = ["title", "description"]
-	list_filter = ["price_quick_help"]
+	list_filter = ["country", "region", "category"]
 	class Meta: 
 		model = Trip
 
