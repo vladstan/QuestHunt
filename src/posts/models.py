@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 
-class Trip(models.Model):
+class Post(models.Model):
 
 	CATEGORY_CHOICES = (
         ("ADV", "Adventure Travel"),
@@ -29,7 +29,7 @@ class Trip(models.Model):
 	region = models.CharField(max_length=20, default = 'Florida')
 	timestamp = models.DateTimeField(auto_now_add = True, auto_now = False)
 	updated = models.DateTimeField(auto_now_add = False, auto_now = True)
-	photo = models.FileField(upload_to = 'trips', default='/media/trips/iceland.jpg')
+	photo = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
 	status = models.BooleanField(default = True)
 	approved = models.BooleanField(default = True)
 	featured = models.BooleanField(default = False)
@@ -38,14 +38,14 @@ class Trip(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		return reverse("trip_details", kwargs = {'slug': self.slug})
+		return reverse("post_details", kwargs = {'slug': self.slug})
 
 
 def create_slug(instance, new_slug = None):
 	slug = slugify(instance.title)
 	if new_slug is not None:
 		slug = new_slug
-	qs = Trip.objects.filter(slug = slug).order_by('-id')
+	qs = Post.objects.filter(slug = slug).order_by('-id')
 	exists = qs.exists()
 	if exists:
 		new_slug = "%s-%s" %(slug, qs.first().id)
@@ -57,4 +57,4 @@ def pre_save_group_receiver(sender, instance, *args, **kwargds):
 		instance.slug = create_slug(instance)
 
 
-pre_save.connect(pre_save_group_receiver, sender = Trip)
+pre_save.connect(pre_save_group_receiver, sender = Post)

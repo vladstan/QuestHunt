@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from trips.models import Trip
+from posts.models import Post
 
 # Create your views here.
 
 def home(request):
-	trips = Trip.objects.filter(featured = True)
-	return render(request, 'home.html', {'trips': trips})
+	posts = Post.objects.filter(featured = True)
+	return render(request, 'home.html', {'posts': posts})

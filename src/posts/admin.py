@@ -2,14 +2,14 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Trip
+from .models import Post
 
-class TripAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
 	list_display = ["__str__", "country"]
 	search_fields = ["title", "description"]
 	list_filter = ["country", "region", "category"]
 	class Meta: 
-		model = Trip
+		model = Post
 
 
-admin.site.register(Trip, TripAdmin)
+admin.site.register(Post, PostAdmin)
