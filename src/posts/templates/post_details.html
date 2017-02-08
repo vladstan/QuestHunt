@@ -13,9 +13,10 @@
 			<div class="panel-body">
 				<h1>{{ post.title}}</h1>
 				<hr/>
-          		Travel Style: <span class="label label-warning">{{ post.category }}</span> <br>
-          		Countries: <span class="label label-primary">{{ post.country }}</span> Regions: <span class="label label-default">{{ post.region }}</span>
-				<b>{{ post.author.subscribers }} Subscribers | </b> <button type="submit" class="btn btn-info btn-small">Subscribe</button>
+          		Travel Style: {% for category in categories %}<span class="label label-warning">{{ category.name }}</span> {% endfor %} <br>
+          		Countries: {% for country in countries %}<span class="label label-primary">{{ country.name }}</span> {% endfor %}
+          		Regions: {% for region in regions %}<span class="label label-default">{{ region.name }}</span> {% endfor %}
+          		Cities: {% for city in cities %}<span class="label label-info">{{ city.name }}</span> {% endfor %}
           		<br><br>
           		<img src="/media/{{ post.cover_image }}" class="img-responsive center-block">
 				<p>{{ post.content | markdown }}</p>
@@ -33,6 +34,15 @@
 		        <a href="/experts/{{post.author.slug}}" class="btn btn-success btn-block">Get Quick Help</a>
 		    </div>
 		</div>
+		<div class="panel panel-default">
+    		<div class="panel-body">
+    			<h3>Subscribe to {{post.author.user.get_full_name }}<span class="dropup"><span class="caret"></span></span></h3>
+	        	<p>Subscribers: {{ post.author.subscribers}}</p>
+	        	<br>
+	        	<p>We will notify you every time {{post.author.user.get_full_name }} will post something new on QuestHunt</p>
+        		<button type="submit" class="btn btn-info btn-block">Subscribe</button>
+		    </div>
+	    </div>
 	</div>
 </div>
 

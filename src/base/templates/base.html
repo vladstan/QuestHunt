@@ -23,9 +23,9 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="/">QuestHunt</a>
           </div>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left"  method="GET" action="">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Find a trip">
+              <input type="text" name="q" class="form-control" placeholder="Search for ideas, destinations or anything">
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
@@ -37,6 +37,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Become a Trip Expert</a></li>
+                  <li><a href="#">Expert Dashboard</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="#">My Subscribtions</a></li>
                   <li><a href="#">My Favourites</a></li>
@@ -56,14 +57,9 @@
       <div id="experiences">
         <div class="container">
           <ul class="nav navbar-nav">
-            <li><a href="/experiences/adventure">Adventure Travel</a></li>
-            <li><a href="/experiences/art-culture">Art & Culture</a></li>
-            <li><a href="/experiences/backpacking">Backpacking</a></li>
-            <li><a href="/experiences/family-holidays">Family Holydays</a></li>
-            <li><a href="/experiences/food-drink">Food & Drink</a></li>
-            <li><a href="/experiences/road-trips">Road Trips</a></li>
-            <li><a href="/experiences/travel-budget">On a Budget</a></li>
-            <li><a href="/experiences/wildlife-nature">Wildlife & Nature</a></li>
+            {% for categ in categs %}
+            <li><a href="/experiences/{{categ.slug}}">{{categ.name}}</a></li>
+            {% endfor %}
           </ul>
         </div>
       </div>

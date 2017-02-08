@@ -2,17 +2,16 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Post
-from .models import Category
+from .models import Post, Categ, Location
 
 
 class PostAdmin(admin.ModelAdmin):
-	list_display = ["__str__", "country"]
+	list_display = ["__str__"]
 	search_fields = ["title", "description"]
-	list_filter = ["country", "region", "category"]
 	class Meta: 
 		model = Post
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Category)
+admin.site.register(Categ)
+admin.site.register(Location)

@@ -8,44 +8,42 @@ from profile.models import Profile
 
 # Create your models here.
 
-class Category(models.Model):
+class Categ(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(unique = True)
+	cover_image = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
 
 	def __str__(self):
 		return self.name
 
 
-class Post(models.Model):
+class Location(models.Model):
+	type = models.CharField(max_length=100)
+	name = models.CharField(max_length=100)
 
-	CATEGORY_CHOICES = (
-        ("ADV", "Adventure Travel"),
-        ("ART", "Art & Culture"),
-        ("BCK", "Backpacking"),
-        ("FAM", "Family Holydays"),
-        ("FOD", "Food & Drink"),
-        ("ROD", "Road Trips"),
-        ("BGT", "On a budget"),
-        ("WIL", "Wildlife & Nature"),
-    )
+
+	def __str__(self):
+		return self.name
+
+class Post(models.Model):
 
 
 	title = models.CharField(max_length=140)
 	slug = models.SlugField(unique = True)
 	author = models.ForeignKey(Profile)
 	summary = models.TextField(default="Summary Here")
-	category = models.ForeignKey(Category)
+	categories = models.ManyToManyField(Categ)
 	#category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default = 'ADV')
 	content = models.TextField(default="content")
 	gmaps_embed_url = models.TextField(blank=True)
-	country = models.CharField(max_length=20, default = 'United States')
-	region = models.CharField(max_length=20, default = 'Florida')
 	timestamp = models.DateTimeField(auto_now_add = True, auto_now = False)
 	updated = models.DateTimeField(auto_now_add = False, auto_now = True)
 	cover_image = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
+	#add photo section
 	status = models.BooleanField(default = True)
 	approved = models.BooleanField(default = True)
 	featured = models.BooleanField(default = False)
+	locations = models.ManyToManyField(Location)
 
 	def __str__(self):
 		return self.title
