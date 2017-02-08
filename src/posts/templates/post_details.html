@@ -15,9 +15,10 @@
 				<hr/>
           		Travel Style: <span class="label label-warning">{{ post.category }}</span> <br>
           		Countries: <span class="label label-primary">{{ post.country }}</span> Regions: <span class="label label-default">{{ post.region }}</span>
+				<b>{{ post.author.subscribers }} Subscribers | </b> <button type="submit" class="btn btn-info btn-small">Subscribe</button>
           		<br><br>
-          		<img src="/media/{{ post.photo }}" class="img-responsive center-block">
-				<p>{{ post.description | markdown }}</p>
+          		<img src="/media/{{ post.cover_image }}" class="img-responsive center-block">
+				<p>{{ post.content | markdown }}</p>
 			</div>
 		</div>
 	</div>
@@ -25,37 +26,13 @@
 	<div class="col-md-4">
 	    <div class="panel panel-default">
 		    <div class="panel-body">
-		        <img src="{{post.author.profile.avatar}}" class="img-circle center-block" height="100" width="100">
-		        <a href="#"><h4 class="text-center">{{ post.author.get_full_name }}</h4></a><br>
-		        <b>{{ post.author.profile.followers }} Followers | </b><a href="https://twitter.com/TwitterDev" class="twitter-follow-button" data-show-count="false">Follow Sarah Jones</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+		        <img src="{{post.author.avatar}}" class="img-circle center-block" height="100" width="100">
+		        <a href="#"><h4 class="text-center">{{ post.author.user.get_full_name }}</h4></a>
 		        <hr/>
-		        <p>{{ post.author.profile.about }}</p>
+		        <p>{{ post.author.about }}</p>
+		        <a href="/experts/{{post.author.slug}}" class="btn btn-success btn-block">Get Quick Help</a>
 		    </div>
 		</div>
-		<div class="panel panel-default">
-    		<div class="panel-body">
-    			<h3>{{ post.author.profile.price_quick_help }} Quick Help <span class="dropup"><span class="caret"></span></span></h3>
-	        	<p>I can help you choose better traveling options, save money, make sure you don't miss something important when visting, and I can introduce you to right people once you're there.</p>
-	        	<li> Save up to $300 on bookings</li>
-	        	<li> Get the most out of the post</li>
-	        	<li> Meet awesome locals.</li>
-	        	<br>
-        		<button type="submit" class="btn btn-success btn-block">Get Quick Help</button>
-		    </div>
-	    </div>
-	    <div>
-            <div class="panel panel-default">
-        		<div class="panel-body">
-        			<h3>{{ post.author.profile.price_full_help }} Full Trip Help <span class="caret"></span></h3>
-        			<p>Besides the planning and discovery part, I can help you with info during the post. From small things like finding a coffee shop, to help you solve special requests.</p>
-		        	<li> Save monney on Booking</li>
-		        	<li> Get full concierge during the post</li>
-		        	<li> Connect with awesome people.</li>
-		        	<br>
-	        		<button type="submit" class="btn btn-success btn-block">Get Full Trip Help</button>
-        		</div>
-  			</div>
-	   	</div>
 	</div>
 </div>
 

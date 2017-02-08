@@ -17,20 +17,12 @@ def posts_list(request):
 	posts = Post.objects.filter(status=True)
 	return render(request, 'posts_list.html', {"posts": posts})
 
-def category(request, link):
-	categories = {
-		"adventure" : "ADV",
-		"art-culture" : "ART",
-		"backpacking" : "BKP",
-		"family-holidays" : "FAM",
-		"food-drink" : "FOD",
-		"road-trips" : 'ROD',
-		"budget" : 'BGT',
-		"wildlife-nature": 'WIL'
-	}
+def category(request):
+
+	print = request
 
 	try:
-		posts = Post.objects.filter(category = categories[link])
+		posts = Post.objects.filter(category = request)
 		return render(request, 'posts_list.html', {'posts': posts})
 
 	except KeyError:

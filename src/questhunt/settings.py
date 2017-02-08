@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #our apps
     'posts',
     'base',
     'checkout',
-    'destinations',
     'experiences',
-    'expert_dashboard',
-    'expert_profile',
-    'user_profile',
+    'profile',
+    
     #third party
     'markdown_deux',
     'allauth',

@@ -11,7 +11,7 @@
     {% for post in posts %}
       <div class="col-md-3">
         <div class="thumbnail">
-          <a href="{{ post.get_absolute_url }}"><img src="/media/{{ post.photo }}"></a>
+          <a href="{{ post.get_absolute_url }}"><img src="/media/{{ post.cover_image }}"></a>
           <div class="caption">
             <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
           </div>

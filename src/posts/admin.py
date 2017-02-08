@@ -3,6 +3,8 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import Post
+from .models import Category
+
 
 class PostAdmin(admin.ModelAdmin):
 	list_display = ["__str__", "country"]
@@ -13,3 +15,4 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
+admin.site.register(Category)
