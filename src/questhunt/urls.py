@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', base_views.home, name='home'),
     url('', include('posts.urls')),
-    url('', include('profile.urls'))
+    url('', include('profile.urls')),
+    url('', include('expert_jobs.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

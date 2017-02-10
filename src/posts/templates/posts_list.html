@@ -3,10 +3,17 @@
 
 {% block page %}
 
+
+
   <div class="row">
+
     <div class="col-md-12">
       <img src="/media/{{ current_categ.cover_image }}" class="banner">
+    </div>
+    <div class="jumbotron">
       <h3>{{current_categ.name}}</h3>
+      <p>Get notified every time we publish a new tip, a new hack or a deal on {{current_categ.name}}.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Subscribe</a></p>
     </div>
     {% for post in posts %}
       <div class="col-md-3">

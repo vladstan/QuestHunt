@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'checkout',
     'experiences',
     'profile',
+    'expert_jobs',
     
     #third party
     'markdown_deux',
