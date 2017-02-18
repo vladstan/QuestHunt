@@ -8,7 +8,7 @@ from .models import Profile, Gig, Review
 class ProfileAdmin(admin.ModelAdmin):
 	list_display = ["__str__", "email"]
 	search_fields = ["title", "description"]
-	list_filter = ["is_expert", "gig"]
+	list_filter = ["is_master", "gig"]
 	class Meta: 
 		model = Profile
 

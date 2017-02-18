@@ -13,7 +13,7 @@ class Profile(models.Model):
 	video = models.CharField(max_length = 500)
 	email = models.CharField(max_length = 500, default = 'me@email.com')
 	about = models.CharField(max_length = 1000)
-	is_expert = models.BooleanField(default=False)
+	is_master = models.BooleanField(default=False)
 	subscribers = models.CharField(max_length = 500)
 
 

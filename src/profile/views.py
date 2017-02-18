@@ -7,8 +7,8 @@ from quests.models import Quest
 
 
 
-def expert_profile(request, slug = None):
-	template = "expert_profile.html"
+def master_profile(request, slug = None):
+	template = "master_profile.html"
 	profile = get_object_or_404(Profile, slug=slug)
 	quests = Quest.objects.filter(status=True, author=profile)
 	gig = Gig.objects.get(profile = profile)
