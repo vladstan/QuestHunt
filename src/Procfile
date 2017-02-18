@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath /path/to/meraki meraki.wsgi

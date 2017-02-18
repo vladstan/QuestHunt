@@ -15,12 +15,12 @@
       <p>{{current_categ.description}}</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Subscribe</a></p>
     </div>
-    {% for post in posts %}
+    {% for quest in quests %}
       <div class="col-md-3">
         <div class="thumbnail">
-          <a href="{{ post.get_absolute_url }}"><img src="/media/{{ post.cover_image }}"></a>
+          <a href="{{ quest.get_absolute_url }}"><img src="/media/{{ quest.cover_image }}"></a>
           <div class="caption">
-            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+            <p><a href="{{ quest.get_absolute_url }}">{{ quest.title }}</a></p>
           </div>
         </div>
       </div>

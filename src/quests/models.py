@@ -26,7 +26,7 @@ class Location(models.Model):
 	def __str__(self):
 		return self.name
 
-class Post(models.Model):
+class Quest(models.Model):
 
 
 	title = models.CharField(max_length=140)
@@ -50,13 +50,13 @@ class Post(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		return reverse("post_details", kwargs = {'slug': self.slug})
+		return reverse("quest_details", kwargs = {'slug': self.slug})
 
 def create_slug(instance, new_slug = None):
 	slug = slugify(instance.title)
 	if new_slug is not None:
 		slug = new_slug
-	qs = Post.objects.filter(slug = slug).order_by('-id')
+	qs = Quest.objects.filter(slug = slug).order_by('-id')
 	exists = qs.exists()
 	if exists:
 		new_slug = "%s-%s" %(slug, qs.first().id)
@@ -68,7 +68,7 @@ def pre_save_group_receiver(sender, instance, *args, **kwargds):
 		instance.slug = create_slug(instance)
 
 
-pre_save.connect(pre_save_group_receiver, sender = Post)
+pre_save.connect(pre_save_group_receiver, sender = Quest)
 
 
 

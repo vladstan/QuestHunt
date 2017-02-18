@@ -2,16 +2,17 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Post, Categ, Location
+from .models import Quest, Categ, Location
 
 
-class PostAdmin(admin.ModelAdmin):
+class QuestAdmin(admin.ModelAdmin):
 	list_display = ["__str__"]
 	search_fields = ["title", "description"]
+	filter_horizontal = ('locations',)
 	class Meta: 
-		model = Post
+		model = Quest
 
 
-admin.site.register(Post, PostAdmin)
+admin.site.register(Quest, QuestAdmin)
 admin.site.register(Categ)
 admin.site.register(Location)
