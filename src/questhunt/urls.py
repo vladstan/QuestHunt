@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^$', base_views.home, name='home'),
     url('', include('quests.urls')),
     url('', include('profile.urls')),
-    url('', include('expert_jobs.urls'))
+    url('', include('checkout.urls')),
+    url('', include('profile.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

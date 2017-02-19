@@ -19,7 +19,18 @@
           		Cities: {% for city in cities %}<span class="label label-info">{{ city.name }}</span> {% endfor %}
           		<br><br>
           		<img src="/media/{{ quest.cover_image }}" class="img-responsive center-block">
+          		<h3>Quest Details</h3>
+          		<p>{{ quest.summary | markdown }}</p>
 				<p>{{ quest.content | markdown }}</p>
+				<hr>
+				<div>
+					<div class="col-md-6">
+						<button type="submit" class="btn btn-info btn-block">Save this quest</button> 
+					</div>
+					<div class="col-md-6">
+						<button type="submit" class="btn btn-success btn-block">Accept this quest $19</button>
+					</div>	
+				</div>
 			</div>
 		</div>
 	</div>
@@ -36,11 +47,18 @@
 		</div>
 		<div class="panel panel-default">
     		<div class="panel-body">
-    			<h3>Subscribe to {{quest.author.user.get_full_name }}<span class="dropup"><span class="caret"></span></span></h3>
-	        	<p>Subscribers: {{ quest.author.subscribers}}</p>
+    			<h3>Find a mate for this Quest</h3>
+	        	<p>This is a list of people willing to do this quest and looking for a mate. The percentege represents the matching score with you.</p>
 	        	<br>
-	        	<p>We will notify you every time {{quest.author.user.get_full_name }} will quest something new on QuestHunt</p>
-        		<button type="submit" class="btn btn-info btn-block">Subscribe</button>
+		        	<div class="text-center center-block">
+		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" height="50", weight="50" ><br>92%</div>
+		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="" height="50", weight="50"><br>87%</div>
+		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="" height="50", weight="50"><br>85%</div>
+		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/men/18.jpg" alt="" height="50", weight="50"><br>83%</div>
+		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/women/35.jpg" alt="" height="50", weight="50"><br>78%</div>
+					</div>
+				<br><br>
+        		<button type="submit" class="btn btn-info btn-block">Find a mate $20</button>
 		    </div>
 	    </div>
 	</div>

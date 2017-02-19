@@ -13,18 +13,24 @@ class Categ(models.Model):
 	slug = models.SlugField(unique = True)
 	cover_image = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
 	description = models.TextField(max_length=1000, default="Get notified every time we publish a new tip, a new hack or a deal on Adventure Travel.")
+	subscribers = subscribers = models.ManyToManyField(User, blank=True, related_name="category_subscribers")
 
 	def __str__(self):
 		return self.name
 
+	def get_categ_subscribers(self):
+		return self.subscribers.all()
 
 class Location(models.Model):
 	type = models.CharField(max_length=100)
 	name = models.CharField(max_length=100)
-
+	subscribers = models.ManyToManyField(User, blank=True, related_name="location_subscribers")
 
 	def __str__(self):
 		return self.name
+
+	def get_location_subscribers(self):
+		return self.subscribers.all()
 
 class Quest(models.Model):
 

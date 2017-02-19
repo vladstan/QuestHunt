@@ -1,5 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect,  get_object_or_404
-
+from django.views import View
 
 # Create your views here.
 
@@ -45,3 +46,17 @@ def category(request, link):
 
 	except KeyError:
 		return redirect('quests_list')	
+
+class UserSubcribeCategoryView(View):
+	def get(self, request, link, *args, **kwargs):
+		toggle_category = get_object_or_404(Categ, slug = link)
+		print(toggle_category.slug)
+		print(toggle_category.subscribers.all().count())
+		if request.user.is_authenticated():
+			if request.user in toggle_category.subscribers.all():
+				toggle_category.subscribers.remove(request.user)
+			else:
+				toggle_category.subscribers.add(request.user)
+		return redirect("category", link=toggle_category.slug)
+
+

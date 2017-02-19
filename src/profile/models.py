@@ -1,21 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 
 
 
+
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete = models.CASCADE)
+	user = models.OneToOneField(User, on_delete = models.CASCADE, related_name="profile")
 	slug = models.SlugField(unique = True)
 	avatar = models.CharField(max_length = 500)
 	video = models.CharField(max_length = 500)
 	email = models.CharField(max_length = 500, default = 'me@email.com')
 	about = models.CharField(max_length = 1000)
 	is_master = models.BooleanField(default=False)
-	subscribers = models.CharField(max_length = 500)
-
+	subscribers = models.ManyToManyField(User, blank=True, related_name="subscribers")
 
 	def __str__(self):
 		return self.user.username
@@ -45,3 +44,4 @@ class Review(models.Model):
 
 	def __str__(self):
 		return self.author
+

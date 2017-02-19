@@ -13,7 +13,8 @@
     <div class="jumbotron">
       <h3>{{current_categ.name}}</h3>
       <p>{{current_categ.description}}</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Subscribe</a></p>
+      <p>Subscribers: {{current_categ.subscribers.count}}</p>
+      <p><a class="btn btn-primary btn-lg" href="/category/{{ current_categ.slug }}/subscribe" role="button">Subscribe</a></p>
     </div>
     {% for quest in quests %}
       <div class="col-md-3">
