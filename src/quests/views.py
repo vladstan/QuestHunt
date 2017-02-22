@@ -4,7 +4,7 @@ from django.views import View
 
 # Create your views here.
 
-from .models import Quest, Categ
+from .models import Quest, Tribe
 
 def quest_details(request, slug = None, link = None):
 	template = "quest_details.html"
@@ -18,7 +18,7 @@ def quest_details(request, slug = None, link = None):
 		"cities": cities,
 		"countries": countries,
 		"regions": regions,
-		"categories": quest.categories.all()
+		"tribes": quest.tribes.all()
 	}
 	return render(request, template, context)
 
@@ -30,33 +30,33 @@ def quests_list(request):
 	}
 	return render(request, 'quests_list.html', context)
 
-def category(request, link):
+def tribe(request, link):
 
 	try:
 		#we need to fox this.
-		quests = Quest.objects.filter(categories__slug__in = [link])
-		current_categ = Categ.objects.get(slug = link)
-		categs = Categ.objects.all()
+		quests = Quest.objects.filter(tribes__slug__in = [link])
+		current_tribe = Tribe.objects.get(slug = link)
+		tribes = Tribe.objects.all()
 		context = {
 			"quests": quests,
-			"categs": categs,
-			"current_categ": current_categ,
+			"tribes": tribes,
+			"current_tribe": current_tribe,
 		}
 		return render(request, 'quests_list.html', context)
 
 	except KeyError:
 		return redirect('quests_list')	
 
-class UserSubcribeCategoryView(View):
+class UserSubcribeTribeView(View):
 	def get(self, request, link, *args, **kwargs):
-		toggle_category = get_object_or_404(Categ, slug = link)
-		print(toggle_category.slug)
-		print(toggle_category.subscribers.all().count())
+		toggle_tribe = get_object_or_404(Tribe, slug = link)
+		print(toggle_tribe.slug)
+		print(toggle_tribe.members.all().count())
 		if request.user.is_authenticated():
-			if request.user in toggle_category.subscribers.all():
-				toggle_category.subscribers.remove(request.user)
+			if request.user in toggle_tribe.members.all():
+				toggle_tribe.members.remove(request.user)
 			else:
-				toggle_category.subscribers.add(request.user)
-		return redirect("category", link=toggle_category.slug)
+				toggle_tribe.members.add(request.user)
+		return redirect("tribe", link=toggle_tribe.slug)
 
 

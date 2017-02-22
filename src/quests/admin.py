@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Quest, Categ, Location
+from .models import Quest, Tribe, Location
 
 class QuestAdmin(admin.ModelAdmin):
 	list_display = ["__str__"]
@@ -12,5 +12,5 @@ class QuestAdmin(admin.ModelAdmin):
 		model = Quest
 
 admin.site.register(Quest, QuestAdmin)
-admin.site.register(Categ)
+admin.site.register(Tribe)
 admin.site.register(Location)

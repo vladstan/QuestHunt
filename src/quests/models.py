@@ -8,18 +8,18 @@ from profile.models import Profile
 
 # Create your models here.
 
-class Categ(models.Model):
+class Tribe(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(unique = True)
 	cover_image = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
 	description = models.TextField(max_length=1000, default="Get notified every time we publish a new tip, a new hack or a deal on Adventure Travel.")
-	subscribers = subscribers = models.ManyToManyField(User, blank=True, related_name="category_subscribers")
+	members = models.ManyToManyField(User, blank=True, related_name="tribe_members")
 
 	def __str__(self):
 		return self.name
 
-	def get_categ_subscribers(self):
-		return self.subscribers.all()
+	def get_tribe_members(self):
+		return self.members.all()
 
 class Location(models.Model):
 	type = models.CharField(max_length=100)
@@ -39,8 +39,7 @@ class Quest(models.Model):
 	slug = models.SlugField(unique = True)
 	author = models.ForeignKey(Profile)
 	summary = models.TextField(default="Summary Here")
-	categories = models.ManyToManyField(Categ)
-	#category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default = 'ADV')
+	tribes = models.ManyToManyField(Tribe)
 	content = models.TextField(default="content")
 	gmaps_embed_url = models.TextField(blank=True)
 	timestamp = models.DateTimeField(auto_now_add = True, auto_now = False)

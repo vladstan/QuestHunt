@@ -13,7 +13,7 @@
 			<div class="panel-body">
 				<h1>{{ quest.title}}</h1>
 				<hr/>
-          		Travel Style: {% for category in categories %}<span class="label label-warning">{{ category.name }}</span> {% endfor %} <br>
+          		Travel Style: {% for category in categories %}<span class="label label-warning"><a href="/category/{{category.slug}}">{{ category.name }}</a></span> {% endfor %} <br>
           		Countries: {% for country in countries %}<span class="label label-primary">{{ country.name }}</span> {% endfor %}
           		Regions: {% for region in regions %}<span class="label label-default">{{ region.name }}</span> {% endfor %}
           		Cities: {% for city in cities %}<span class="label label-info">{{ city.name }}</span> {% endfor %}
@@ -28,7 +28,7 @@
 						<button type="submit" class="btn btn-info btn-block">Save this quest</button> 
 					</div>
 					<div class="col-md-6">
-						<button type="submit" class="btn btn-success btn-block">Accept this quest $19</button>
+						<button type="submit" class="btn btn-success btn-block">Personalize Quest</button>
 					</div>	
 				</div>
 			</div>
@@ -39,10 +39,9 @@
 	    <div class="panel panel-default">
 		    <div class="panel-body">
 		        <img src="{{quest.author.avatar}}" class="img-circle center-block" height="100" width="100">
-		        <a href="#"><h4 class="text-center">{{ quest.author.user.get_full_name }}</h4></a>
+		        <a href="/masters/{{quest.author.slug}}"><h4 class="text-center">{{ quest.author.user.get_full_name }}</h4></a>
 		        <hr/>
 		        <p>{{ quest.author.about }}</p>
-		        <a href="/masters/{{quest.author.slug}}" class="btn btn-success btn-block">Get Quick Help</a>
 		    </div>
 		</div>
 		<div class="panel panel-default">
@@ -58,7 +57,7 @@
 		                <div style="display: inline-block"><img src="https://randomuser.me/api/portraits/women/35.jpg" alt="" height="50", weight="50"><br>78%</div>
 					</div>
 				<br><br>
-        		<button type="submit" class="btn btn-info btn-block">Find a mate $20</button>
+        		<button type="submit" class="btn btn-success btn-block">Personalize Quest</button>
 		    </div>
 	    </div>
 	</div>

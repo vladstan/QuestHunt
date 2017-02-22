@@ -8,13 +8,13 @@
   <div class="row">
 
     <div class="col-md-12">
-      <img src="/media/{{ current_categ.cover_image }}" class="banner">
+      <img src="/media/{{ current_tribe.cover_image }}" class="banner">
     </div>
     <div class="jumbotron">
-      <h3>{{current_categ.name}}</h3>
-      <p>{{current_categ.description}}</p>
-      <p>Subscribers: {{current_categ.subscribers.count}}</p>
-      <p><a class="btn btn-primary btn-lg" href="/category/{{ current_categ.slug }}/subscribe" role="button">Subscribe</a></p>
+      <h3>{{current_tribe.name}}</h3>
+      <p>{{current_tribe.description}}</p>
+      <p>Members: {{current_tribe.members.count}}</p>
+      <p><a class="btn btn-primary btn-lg" href="/tribes/{{ current_tribe.slug }}/subscribe" role="button">Join {{ current_tribe.name}} Tribe</a></p>
     </div>
     {% for quest in quests %}
       <div class="col-md-3">
