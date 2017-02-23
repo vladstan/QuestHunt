@@ -4,16 +4,29 @@
 {% block page %}
 
   <div class="row">
-    <div class="col-md-12">
-      <img src="{% static 'img/home_page.jpg' %}" class="banner">
+    <div class="jumbotron">
+      <div>
+        <div class="col-md-5">
+          <h1>Travel like a boss</h1>
+          <p>Here is the reason why you should use Quest Hunt just to travel more and smarter. Plus you will have the support of the master allways.</p>
+        </div>
+        <div class="col-md-7">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/NO4P8COz_8w?list=PLhUy-arUtJKbdZHS1v8v1SZmnKI_7x3YL" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Signup now</a></p>
     </div>
 
-    {% for post in posts %}
+    {% for tribe in tribes %}
       <div class="col-md-3">
         <div class="thumbnail">
-          <a href="{{ post.get_absolute_url }}"><img src="/media/{{ post.cover_image }}"></a>
+          <a href="/tribes/{{ tribe.slug }}"><img src="/media/{{ tribe.cover_image }}"></a>
+          
           <div class="caption">
-            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+            <p><a href="/tribes/{{ tribe.slug }}"><h4>{{ tribe.name }}</h4></a></p>
+            <p>{{ tribe.description }}</p>
+            <p><b>Members: {{ tribe.members.count }}</b></p>
+            
           </div>
         </div>
       </div>
