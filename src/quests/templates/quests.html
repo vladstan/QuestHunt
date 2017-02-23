@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+
+
+  <div class="row">
+  <div class="jumbotron">
+    <h1>Quests</h1>
+    <p>This is why Quests exist. They are some sort of Things to Do when you visit a location. We need to explain why to choose a tribe and to join it.</p>
+  </div>
+    {% for quest in quests %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="{{ quest.slug }}"><img src="/media/{{ quest.cover_image }}"></a>
+          <div class="caption">
+            <a href="{{ quest.slug}}"><h4>{{ quest.name }}</h4></a>
+            <p>{{ quest.description}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

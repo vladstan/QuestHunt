@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', base_views.home, name='home'),
     url('', include('quests.urls')),
+    url('', include('tribes.urls')),
+    url('', include('destinations.urls')),
     url('', include('profile.urls')),
     url('', include('checkout.urls')),
     url('', include('profile.urls'))

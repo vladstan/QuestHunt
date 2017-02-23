@@ -1,0 +1,24 @@
+  {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+
+
+  <div class="row">
+  <div class="jumbotron">
+    <h1>Destinations</h1>
+    <p>This is why Destinations exist. They are some sort of Things to Do when you visit a location. We need to explain why to choose a tribe and to join it.</p>
+  </div>
+    {% for destination in destinations %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <div class="caption">
+            <p><a href="{{ destination.slug}}">{{ destination.name }}</a></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

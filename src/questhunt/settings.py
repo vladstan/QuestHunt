@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'quests',
     'base',
     'checkout',
-    'experiences',
     'profile',
-    'expert_jobs',
-    
+    'tribes',
+    'destinations',
+
     #third party
     'markdown_deux',
     'allauth',

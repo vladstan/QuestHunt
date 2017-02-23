@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+
+
+  <div class="row">
+  <div class="jumbotron">
+    <h1>Tribes</h1>
+    <p>This is why Tribes exist. We need to explain why to choose a tribe and to join it.</p>
+  </div>
+    
+    {% for tribe in tribes %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="{{ tribe.slug }}"><img src="/media/{{ tribe.cover_image }}"></a>
+          <div class="caption">
+            <a href="{{ tribe.slug}}"><h4>{{ tribe.name }}</h4></a>
+            <p>{{ tribe.description}}</p>
+            <p>Members: {{tribe.members.count }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

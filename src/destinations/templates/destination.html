@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+
+  <div class="row">
+  	<div class="col-md-12">
+      <img src="/media/{{ current_destination.cover_image }}" class="banner">
+    </div>
+    <div class="jumbotron">
+      <h3>{{current_destination.name}}</h3>
+	  <p>{{ current_destination.description }} </p>
+      <p>Subscribers: {{current_destination.subscribers.count}}</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Subscribe</a></p>
+    </div>
+    {% for quest in quests %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="{{ quest.get_absolute_url }}"><img src="/media/{{ quest.cover_image }}"></a>
+          <div class="caption">
+            <p><a href="{{ quest.get_absolute_url }}">{{ quest.title }}</a></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
