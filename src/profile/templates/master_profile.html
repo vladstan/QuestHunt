@@ -37,22 +37,8 @@
 	<div class="col-md-4">
 		<div class="panel panel-default">
     		<div class="panel-body">
-    			<h3>${{ gig.price}} Quick Help <span class="dropup"><span class="caret"></span></span></h3>
-	        	<p>{{ gig.description }}</p>
-	        	<li> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ gig.value_one }}</li>
-	        	<li> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ gig.value_two }}</li>
-	        	<li> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ gig.value_three }}</li>
-	        	<br>
-        		<button type="submit" class="btn btn-success btn-block">Get Quick Help</button>
-		    </div>
-	    </div>
-	    <div align="center">
-	    	<a href="#" align="center">See how it works</a> <br>
-	    </div>
-		<div class="panel panel-default">
-    		<div class="panel-body">
     			<h3>Subscribe to {{profile.user.get_full_name }}<span class="dropup"><span class="caret"></span></span></h3>
-	        	<p>Subscribers: {{ profile.subscribers }}</p>
+	        	<p>Subscribers: {{ profile.subscribers.count }}</p>
 	        	<br>
 	        	<p>We will notify you every time {{profile.user.get_full_name }} will post something new on QuestHunt</p>
         		<button type="submit" class="btn btn-info btn-block">Subscribe</button>

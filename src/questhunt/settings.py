@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'profile',
     'tribes',
     'destinations',
+    'masters',
+    'heroes',
 
     #third party
     'markdown_deux',

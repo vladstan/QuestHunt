@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page %}
+
+
+
+  <div class="row">
+  	<div class="jumbotron">
+    	<h1>{{hero.user.first_name}} - {{trip.destination}}</h1>
+    	<p>This is why Heroes exist. They are some sort of Things to Do when you visit a location. We need to explain why to choose a tribe and to join it.</p>
+    	<button type="button" class="btn btn-default btn-lg">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+				{% if trip.points < 60 %}
+					Tourist
+				{% elif trip.points < 90 %}	
+						Scout
+					{% elif trip.points < 100 %}
+						Expert
+					{% endif %}
+		</button>
+		<br><br>
+		<p>No of Visits: {{ trip.no_of_visits }} - Days spent: {{ trip.days_spent}}</p>
+  	</div>
+  	{% for tip in tips %}
+		<ul>
+			<li>{{tip.tip.destination}}</li>
+		</ul>
+  		
+  	{% endfor %}
+  </div>
+
+{% endblock %}
