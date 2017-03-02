@@ -4,37 +4,10 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 from destinations.models import Destination
-from tribes.models import Tribe
+from quests.models import Quest
 
 # Create your models here.
 
-
-class LevelDestination(models.Model):
-	title = models.CharField(max_length=100)
-	description = models.TextField()
-	icon = models.FileField(upload_to = 'icons', default='/media/posts/iceland.jpg')
-	points = models.IntegerField()
-
-class HeroDestination(models.Model):
-	user = models.ForeignKey(User)
-	destination = models.ForeignKey(Destination)
-	tribe = models.ManyToManyField(Tribe)
-	days_spent = models.IntegerField()
-	no_of_visits = models.IntegerField()
-	points = models.IntegerField()
-
-	def __str__(self):
-		return self.user.username
-
-class HeroTip(models.Model):
-	user = models.ForeignKey(User)
-	my_destination = models.ForeignKey(HeroDestination)
-	title = models.CharField(max_length=140)
-	description = models.TextField(max_length=1000)
-	photo = models.FileField(upload_to = 'posts', default='/media/posts/iceland.jpg')
-
-	def __str__(self):
-		return self.user.username
 
 
 class Hero(models.Model):
@@ -48,10 +21,26 @@ class Hero(models.Model):
 	def __str__(self):
 		return self.user.username
 
-
 def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 	if created:
 		new_profile = Hero.objects.get_or_create(user=instance)
 
 post_save.connect(post_save_user_receiver, sender=settings.AUTH_USER_MODEL)
+
+
+class HeroTrip(models.Model):
+	name = models.CharField(blank=False, default="Name your trip", max_length=500)
+	quests = models.ManyToManyField(Quest, through='TripQuest')
+
+	def __str__(self):
+		return self.name
+
+
+class TripQuest(models.Model):
+	quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
+	hero_trip = models.ForeignKey(HeroTrip, on_delete=models.CASCADE)
+	date_accepted = models.DateField()
+	status = models.BooleanField(default=False)
+
+
 

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'quests',
     'base',
     'checkout',
-    'profile',
     'tribes',
     'destinations',
     'masters',

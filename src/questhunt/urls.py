@@ -27,10 +27,8 @@ urlpatterns = [
     url('', include('quests.urls')),
     url('', include('tribes.urls')),
     url('', include('destinations.urls')),
-    url('', include('profile.urls')),
     url('', include('masters.urls')),
     url('', include('heroes.urls')),
-    url('', include('checkout.urls')),
-    url('', include('profile.urls'))
+    url('', include('checkout.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

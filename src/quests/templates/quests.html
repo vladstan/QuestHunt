@@ -18,8 +18,9 @@
         <div class="thumbnail">
           <a href="{{ quest.slug }}"><img src="/media/{{ quest.cover_image }}"></a>
           <div class="caption">
-            <a href="{{ quest.slug}}"><h4>{{ quest.name }}</h4></a>
-            <p>{{ quest.description}}</p>
+            <a href="{{ quest.slug}}"><h4>{{ quest.title }}</h4></a>
+            <p>{{ quest.summary}}</p>
+            <p><button type="submit" class="btn btn-info btn-block">Take this Quest</button> </p>
           </div>
         </div>
       </div>

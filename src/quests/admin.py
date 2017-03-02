@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Quest
+from .models import Quest, Bedge
 
 class QuestAdmin(admin.ModelAdmin):
 	list_display = ["__str__"]
@@ -12,4 +12,4 @@ class QuestAdmin(admin.ModelAdmin):
 		model = Quest
 
 admin.site.register(Quest, QuestAdmin)
-
+admin.site.register(Bedge)

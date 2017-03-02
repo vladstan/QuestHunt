@@ -19,16 +19,27 @@
           		Cities: {% for city in cities %}<span class="label label-info"><a href="/destinations/{{city.slug}}">{{ city.name }}</a></span> {% endfor %}
           		<br><br>
           		<img src="/media/{{ quest.cover_image }}" class="img-responsive center-block">
-          		<h3>Quest Details</h3>
+          		<h3>Summary</h3>
           		<p>{{ quest.summary | markdown }}</p>
-				<p>{{ quest.content | markdown }}</p>
+          		<h3>Quest Description</h3>
+          		<p>{{ quest.description | markdown }}</p>
+          		<h3>Completion Time</h3>
+          		<p>{{ quest.completion_time | markdown }}</p>
+          		<h3>Price Estimation</h3>
+          		<p>{{ quest.price_description | markdown }}</p>
+          		<h3>Rewards</h3>
+          		<img src="/media/{{quest.bedge.icon}}" width="100"></img>
+          		<p><b>{{ quest.bedge.name}}</b></p>
 				<hr>
+				{% for rep in tribe_reputation%}
+					<p>Reputation earned with {{ quest.tribe_reputation }} tribes</p>
+				{% endfor %}
+				{% for rep in tribe_reputation%}
+					<p>Reputation earned with {{ quest.destination_reputation }}</p>
+				{% endfor %}
 				<div>
 					<div class="col-md-6">
-						<button type="submit" class="btn btn-info btn-block">Save this quest</button> 
-					</div>
-					<div class="col-md-6">
-						<button type="submit" class="btn btn-success btn-block">Personalize Quest</button>
+						<button type="submit" class="btn btn-success btn-block">Talk to the Master</button>
 					</div>	
 				</div>
 			</div>
@@ -39,12 +50,13 @@
 	    <div class="panel panel-default">
 		    <div class="panel-body">
 		        <img src="{{quest.author.avatar}}" class="img-circle center-block" height="100" width="100">
-		        <a href="/masters/{{quest.author.slug}}"><h4 class="text-center">{{ quest.author.user.get_full_name }}</h4></a>
+		        <a href="/masters/{{quest.author.slug}}"><h4 class="text-center">{{ quest.author.username }}</h4></a>
 		        <hr/>
 		        <p>{{ quest.author.about }}</p>
+		        <button type="submit" class="btn btn-success btn-block">Talk to the Master</button>
 		    </div>
 		</div>
-		<div class="panel panel-default">
+		<!-- div class="panel panel-default">
     		<div class="panel-body">
     			<h3>Find a mate for this Quest</h3>
 	        	<p>This is a list of people willing to do this quest and looking for a mate. The percentege represents the matching score with you.</p>
@@ -59,7 +71,7 @@
 				<br><br>
         		<button type="submit" class="btn btn-success btn-block">Personalize Quest</button>
 		    </div>
-	    </div>
+	    </div -->
 	</div>
 </div>
 
